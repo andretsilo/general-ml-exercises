@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
 
 data_root = "https://raw.githubusercontent.com/ageron/data/main"
 lifesat = pd.read_csv(data_root + "/lifesat/lifesat.csv")
@@ -17,4 +18,8 @@ model = LinearRegression() # Create linear regression model using least squares:
 model.fit(X, y)
 
 X_new = [[89688.9569584859]] # Ireland
+print(model.predict(X_new))
+
+model = KNeighborsRegressor(n_neighbors=3) # Instance based prediction
+model.fit(X, y)
 print(model.predict(X_new))
